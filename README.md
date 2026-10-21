@@ -46,11 +46,18 @@ ng serve
 The UI calls `https://localhost:7235/api/`. The JWT is stored in `sessionStorage`; the interceptor attaches `Authorization: Bearer <token>` to all requests.
 
 ## Screenshots
-- Login page (`/login`) — branded card with email/password fields, dark sidebar theme behind
-- Dashboard (`/dashboard`) — stat cards + department distribution bars
-- Students (`/students`) — paginated table with filters/search/sorting
 
-See the `dist/` output after `ng build`.
+![Login page](screenshots/login.png)
+*Login page — branded card with email/password fields, dark sidebar theme behind*
+
+![Dashboard](screenshots/dashboard.png)
+*Dashboard — stat cards with department distribution bars*
+
+![Students page](screenshots/students.png)
+*Students — paginated table with filters, search, and sorting*
+
+![Reports page](screenshots/reports.png)
+*Reports and analytics — department distribution and correlation views*
 
 ## Security Notes
 - The JWT signing key **must** be set via the `JWT__SigningKey` environment variable or `Jwt:SigningKey` in `appsettings.json`. The default `appsettings.json` contains a placeholder — **do not use it in production**.
