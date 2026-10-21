@@ -1,0 +1,64 @@
+<div class="section-heading">
+  <h2>Welcome back</h2>
+  <p>A clear view of the college today — students, departments, and enrollments.</p>
+</div>
+
+<section class="hero-card" aria-label="Total students">
+  <div class="hero-main">
+    <div class="hero-label">Total Students</div>
+    <div class="hero-value">{{ stats().students }}</div>
+    <div class="hero-sub">From student records</div>
+  </div>
+  <div class="hero-visual" aria-hidden="true">
+    <svg width="132" height="104" viewBox="0 0 132 104" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="66" cy="34" r="21" fill="#F2C879" fill-opacity="0.9"/>
+      <path d="M30 96c0-16.6 16.1-30 36-30s36 13.4 36 30z" fill="#F2C879" fill-opacity="0.55"/>
+      <circle cx="26" cy="44" r="14" fill="#B98A2E" fill-opacity="0.55"/>
+      <path d="M2 96c0-12.2 10.7-22 24-22 6.4 0 12.2 2 16.8 5.4A27.6 27.6 0 0 0 38 96z" fill="#B98A2E" fill-opacity="0.35"/>
+      <circle cx="106" cy="44" r="14" fill="#B98A2E" fill-opacity="0.55"/>
+      <path d="M130 96c0-12.2-10.7-22-24-22-6.4 0-12.2 2-16.8 5.4A27.6 27.6 0 0 0 94 96z" fill="#B98A2E" fill-opacity="0.35"/>
+    </svg>
+  </div>
+</section>
+
+<div class="stats-row">
+  <article class="stat-card" aria-label="Departments">
+    <div class="stat-label">Departments</div>
+    <div class="stat-value">{{ stats().departments }}</div>
+    <div class="stat-sub">Academic divisions</div>
+  </article>
+  <article class="stat-card" aria-label="Subjects">
+    <div class="stat-label">Subjects</div>
+    <div class="stat-value">{{ stats().subjects }}</div>
+    <div class="stat-sub">Courses offered</div>
+  </article>
+  <article class="stat-card" aria-label="Enrollments">
+    <div class="stat-label">Enrollments</div>
+    <div class="stat-value">{{ stats().enrollments }}</div>
+    <div class="stat-sub">Student-subject links</div>
+  </article>
+  <article class="stat-card" aria-label="Average enrollments per student">
+    <div class="stat-label">Avg. Enrollments</div>
+    <div class="stat-value">{{ avgEnrollmentsPerStudent() }}</div>
+    <div class="stat-sub">Per student</div>
+  </article>
+</div>
+
+<div class="panel department-panel">
+  <div class="panel-head"><h3>Department Distribution</h3></div>
+  @if (deptStats().length === 0) {
+    <p class="state">No data available.</p>
+  } @else {
+    <div class="bar-list" role="list" aria-label="Students by department">
+      @for (d of rankedDepts(); track d.department; let i = $index) {
+        <div class="bar-row" role="listitem" aria-label="{{ d.department }}: {{ d.count }} students">
+          <div class="bar-label">{{ d.department }}</div>
+          <div class="bar-track" aria-hidden="true">
+            <div class="bar-fill" [class.bar-fill-top]="i === 0" [style.width.%]="barWidth(d.count)"></div>
+          </div>
+          <div class="bar-value">{{ d.count }}</div>
+        </div>
+      }
+    </div>
+  }
+</div>

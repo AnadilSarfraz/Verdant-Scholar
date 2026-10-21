@@ -1,0 +1,1 @@
+.layout-shell { display:flex; min-height:100vh; } .main-area { flex:1; min-width:0; display:flex; flex-direction:column; } .page-content { max-width:1200px; margin:0 auto; padding:2rem 1.5rem 4rem; }

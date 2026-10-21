@@ -1,0 +1,73 @@
+.hero-card {
+  background: #0E2A21;
+  color: #fff;
+  border-radius: 14px;
+  padding: 2.4rem 2.6rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+.hero-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-label {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #F2C879;
+  margin-bottom: 0.5rem;
+}
+
+.hero-value {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 3.4rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: #fff;
+}
+
+.hero-sub {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 0.6rem;
+}
+
+.hero-visual {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 172px;
+  height: 132px;
+  border-radius: 999px;
+  background: rgba(242, 200, 121, 0.08);
+  border: 1px solid rgba(242, 200, 121, 0.18);
+}
+
+@media (max-width: 768px) {
+  .hero-card {
+    padding: 1.75rem 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .hero-value {
+    font-size: 2.6rem;
+  }
+
+  .hero-visual {
+    width: 112px;
+    height: 92px;
+  }
+
+  .hero-visual svg {
+    width: 88px;
+    height: 70px;
+  }
+}

@@ -1,0 +1,5 @@
+/* Reports component styles */
+@media (max-width: 768px) {
+  .stats-row { grid-template-columns: 1fr; }
+  .table-wrap table { font-size: .75rem; }
+}
