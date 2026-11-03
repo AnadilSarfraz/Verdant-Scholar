@@ -17,28 +17,40 @@ A College Management System with Angular (frontend), ASP.NET Core Web API (backe
 - Reports and analytics (department distribution, subject popularity, correlation)
 - Role-based authorization (`[Authorize]` on protected controllers); login via `POST /api/auth/login`
 
-## Setup (local)
+## Setup (self-contained repo)
 
-### 1. Backend setup
+All source, migrations, and the setup CLI are included.
+
+### 1. Create the database with EF Core migrations
 ```powershell
-# Set JWT secret (use a real 32+ char secret, not the placeholder)
-$env:JWT__SigningKey = "YourRealSecret-32Chars-Minimum!"
+# From repo root
+cd StudentManagementApi
+dotnet ef database update
+```
 
-# Start API
-cd D:\Projects\StudentManagementApi
+### 2. Configure JWT signing key and SQL connection string
+Edit `StudentManagementApi/appsettings.json` or use environment variables:
+```powershell
+$env:JWT__SigningKey = "YourRealSecret-32Chars-Minimum!"
+# ConnectionString defaults to (localdb)\MSSQLLocalDB; edit if using a different server.
+```
+
+### 3. Create the initial admin using the setup tool
+```powershell
+$env:SETUP_ADMIN_PASSWORD = "YourSecurePass123!"
+dotnet run --project StudentManagementApi.SetupAdmin/
+```
+(The CLI exits without overwriting if the Admin already exists.)
+
+### 4. Run the backend
+```powershell
+cd StudentManagementApi
 dotnet run --urls https://localhost:7235
 ```
 
-### 2. First Admin account
+### 5. Run the Angular frontend
 ```powershell
-$env:SETUP_ADMIN_PASSWORD = "YourSecurePass123!"
-dotnet run --project D:\Projects\StudentManagementApi.SetupAdmin\
-```
-(The setup CLI creates one Admin account; it exits without overwriting if already present.)
-
-### 3. Frontend
-```powershell
-cd D:\Projects\student-management-ui
+cd ..
 npm install
 ng serve
 ```
